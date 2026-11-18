@@ -1,0 +1,47 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente (Segurança: nunca suba senhas ou chaves do MongoDB/AWS)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cobertura de testes e relatórios
+coverage/
+.nyc_output/
+
+# Arquivos temporários e exports locais (ex: CSVs gerados em testes manuais)
+*.csv
+tmp/
+temp/
+
+# Build e cache
+dist/
+build/
+.cache/
+.eslintcache
+
+# Sistema Operacional (Windows / macOS)
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editores e IDEs (VS Code, JetBrains)
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,0 +1,33 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Rodar Testes Unitários
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        # Testa nas versões LTS atuais do Node.js (ajuste se precisar de uma versão específica)
+        node-version: [20.x, 22.x]
+
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Executar testes com cobertura
+        run: node --test --experimental-test-coverage
