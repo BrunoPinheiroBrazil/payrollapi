@@ -9,19 +9,20 @@ on:
 jobs:
   test:
     name: Rodar Testes Unitários
-    runs-on: ubuntu-latest
+    # Fixa a versão do Ubuntu para remover o notice de migração
+    runs-on: ubuntu-24.04
 
     strategy:
       matrix:
-        # Testa nas versões LTS atuais do Node.js (ajuste se precisar de uma versão específica)
+        # Você também pode atualizar a matriz para [22.x, 24.x] se quiser testar nas versões LTS mais recentes
         node-version: [20.x, 22.x]
 
     steps:
       - name: Baixar o código do repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Configurar Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
